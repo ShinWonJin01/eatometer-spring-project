@@ -37,7 +37,7 @@ function deleteReview(reviewId, rstId, currentPage) {
         // 삭제 요청 전송
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/reviews/adminDeleteReview';
+        form.action = '/adminDeleteRestaurant';
         
         const reviewIdInput = document.createElement('input');
         reviewIdInput.type = 'hidden';
@@ -46,12 +46,12 @@ function deleteReview(reviewId, rstId, currentPage) {
         
         const rstIdInput = document.createElement('input');
         rstIdInput.type = 'hidden';
-        rstIdInput.name = 'rstId';
+        rstIdInput.name = 'rst_id';
         rstIdInput.value = rstId;
         
         const pageInput = document.createElement('input');
         pageInput.type = 'hidden';
-        pageInput.name = 'page';
+        pageInput.name = 'pageNum';
         pageInput.value = currentPage || 1;
         
         form.appendChild(reviewIdInput);
