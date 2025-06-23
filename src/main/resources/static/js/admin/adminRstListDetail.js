@@ -28,40 +28,37 @@ function deleteReview(reviewId, rstId, currentPage) {
     
     const confirmMessage = '해당 리뷰를 정말 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.';
     if (confirm(confirmMessage)) {
-        // 삭제 버튼 비활성화 및 로딩 표시
         const deleteBtn = event.target;
         const originalText = deleteBtn.textContent;
         deleteBtn.disabled = true;
         deleteBtn.innerHTML = '<span class="loading"></span>';
-        
-        // 삭제 요청 전송
+
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/adminDeleteRestaurant';
-        
+        form.action = '/adminDeleteReview';  // ✅ 컨트롤러 경로와 일치
+
+        // ✅ name 속성만 정확히 맞추면 끝
         const reviewIdInput = document.createElement('input');
         reviewIdInput.type = 'hidden';
-        reviewIdInput.name = 'reviewId';
+        reviewIdInput.name = 'review_id';  // ❗ 컨트롤러의 @RequestParam 이름과 일치시킴
         reviewIdInput.value = reviewId;
-        
+
         const rstIdInput = document.createElement('input');
         rstIdInput.type = 'hidden';
         rstIdInput.name = 'rst_id';
         rstIdInput.value = rstId;
-        
+
         const pageInput = document.createElement('input');
         pageInput.type = 'hidden';
         pageInput.name = 'pageNum';
         pageInput.value = currentPage || 1;
-        
-        form.appendChild(reviewIdInput);
-        form.appendChild(rstIdInput);
-        form.appendChild(pageInput);
-        
+
+        form.append(reviewIdInput, rstIdInput, pageInput);
         document.body.appendChild(form);
         form.submit();
     }
 }
+
 
 // 가게 목록으로 돌아가기
 function goBack() {
