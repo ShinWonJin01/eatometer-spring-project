@@ -63,6 +63,44 @@ src/main/java/com/dita
 └── vo            # View Object
 ```
 
+## How to Run
+
+```bash
+git clone https://github.com/ShinWonJin01/eatometer-spring-project.git
+cd eatometer-spring-project
+```
+
+1. Java 17과 MySQL을 설치합니다.
+2. MySQL에서 `eatometer` 데이터베이스를 생성합니다.
+3. `src/main/resources/application.properties` 파일에서 MySQL 사용자명과 비밀번호를 본인 환경에 맞게 수정합니다.
+4. 아래 명령어로 프로젝트를 실행합니다.
+
+```bash
+./mvnw.cmd spring-boot:run
+```
+
+5. 브라우저에서 아래 주소로 접속합니다.
+
+```text
+http://localhost
+```
+
+> 데이터베이스 초기 데이터가 없는 경우, 맛집 목록이나 검색 결과가 비어 있을 수 있습니다.
+
+## View Guide
+
+이 프로젝트는 모바일 화면 기준으로 제작되었습니다.
+PC 브라우저에서 확인할 경우 Chrome DevTools의 모바일 화면 모드를 사용하는 것을 권장합니다.
+
+1. Chrome에서 `F12`를 눌러 DevTools를 엽니다.
+2. 왼쪽 상단의 Toggle device toolbar 아이콘을 클릭합니다.
+3. 화면 크기를 모바일 기준으로 설정한 뒤 확인합니다.
+
+## Note
+
+네이버 지도 API는 별도의 API Key 설정이 필요합니다.
+API Key가 설정되지 않은 환경에서는 지도 영역이 정상적으로 표시되지 않을 수 있습니다.
+
 ## My Role
 
 - Spring Boot 기반 웹 애플리케이션 구조 설계 및 구현
